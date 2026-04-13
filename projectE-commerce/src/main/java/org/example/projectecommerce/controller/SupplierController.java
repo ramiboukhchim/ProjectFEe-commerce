@@ -1,7 +1,7 @@
 package org.example.projectecommerce.controller;
 
 import org.example.projectecommerce.entity.Supplier;
-import org.example.projectecommerce.service.SupplierService;
+import org.example.projectecommerce.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,30 +18,37 @@ import java.util.List;
 @RequestMapping("/api/suppliers")
 public class SupplierController {
     @Autowired
-    private SupplierService service;
+    private SupplierRepository supplierRepository;
 
     @GetMapping
     public List<Supplier> getAll() {
-        return service.getAll();
+        return supplierRepository.findAll();
     }
 
     @GetMapping("/{id}")
     public Supplier getById(@PathVariable Long id) {
-        return service.getById(id);
+        return supplierRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Supplier not found"));
     }
 
     @PostMapping
     public Supplier save(@RequestBody Supplier supplier) {
-        return service.save(supplier);
+        return supplierRepository.save(supplier);
     }
 
     @PutMapping("/{id}")
     public Supplier update(@PathVariable Long id, @RequestBody Supplier supplier) {
-        return service.update(id, supplier);
+        Supplier existing = supplierRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Supplier not found"));
+        existing.setName(supplier.getName());
+        return supplierRepository.save(existing);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        service.delete(id);
+        if (!supplierRepository.existsById(id)) {
+            throw new RuntimeException("Supplier not found");
+        }
+        supplierRepository.deleteById(id);
     }
 }

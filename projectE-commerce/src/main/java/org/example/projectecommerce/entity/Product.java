@@ -24,7 +24,7 @@ public class Product {
     private String name;
     private double price;
     private String image;
-    private boolean active = true;
+    private boolean active = true; // Field for logical deletion
 
     @ManyToOne
     @JoinColumn(name = "category_id")

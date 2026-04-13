@@ -2,21 +2,27 @@ package org.example.projectecommerce.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Data
-public class Category {
+@Getter
+@Setter
+@ToString
+public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private boolean active = true; // Field for logical deletion
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users = new HashSet<>();
 }

@@ -1,7 +1,7 @@
 package org.example.projectecommerce.controller;
 
 import org.example.projectecommerce.entity.Category;
-import org.example.projectecommerce.service.CategoryService;
+import org.example.projectecommerce.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,30 +18,37 @@ import java.util.List;
 @RequestMapping("/api/categories")
 public class CategoryController {
     @Autowired
-    private CategoryService service;
+    private CategoryRepository categoryRepository;
 
     @GetMapping
-    public List<Category> getAll() {
-        return service.getAll();
+    public List<Category> getAllActive() {
+        return categoryRepository.findByActiveTrue(); // Fetch only active categories
     }
 
     @GetMapping("/{id}")
     public Category getById(@PathVariable Long id) {
-        return service.getById(id);
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
     }
 
     @PostMapping
     public Category save(@RequestBody Category category) {
-        return service.save(category);
+        return categoryRepository.save(category);
     }
 
     @PutMapping("/{id}")
     public Category update(@PathVariable Long id, @RequestBody Category category) {
-        return service.update(id, category);
+        Category existing = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+        existing.setName(category.getName());
+        return categoryRepository.save(existing);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        service.delete(id);
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+        category.setActive(false); // Logical deletion
+        categoryRepository.save(category);
     }
 }
