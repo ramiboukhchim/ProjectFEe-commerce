@@ -1,0 +1,253 @@
+.super-admin-wrapper {
+  display: flex;
+  min-height: calc(100vh - 80px);
+  gap: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.super-admin-sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: linear-gradient(180deg, #1e1b4b, #312e81);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  gap: 8px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 12px 8px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 8px;
+}
+
+.sidebar-user {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  padding: 0 8px 16px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.sidebar-btn {
+  padding: 12px 16px;
+  background: transparent;
+  color: rgba(255,255,255,0.75);
+  border: none;
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.sidebar-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.sidebar-btn.active {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.sidebar-logout {
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.sidebar-logout:hover {
+  background: rgba(239, 68, 68, 0.35);
+  color: white;
+}
+
+.super-admin-content {
+  flex: 1;
+  background: #f8fafc;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+/* Users panel */
+.users-panel h2 {
+  color: #1e1b4b;
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+}
+
+.sa-alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.sa-alert.error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.sa-alert.success {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.sa-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.sa-card h3 {
+  margin: 0 0 16px;
+  color: #374151;
+}
+
+.sa-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.sa-form input {
+  padding: 10px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  min-width: 160px;
+}
+
+.sa-form input:focus {
+  border-color: #6366f1;
+}
+
+.role-checkboxes {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.role-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+
+.sa-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.sa-btn.primary {
+  background: #6366f1;
+  color: white;
+}
+
+.sa-btn.primary:hover {
+  background: #4f46e5;
+}
+
+.sa-btn.danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.sa-btn.danger:hover {
+  background: #fecaca;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-item {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-info strong {
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.user-roles {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.role-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.role-badge.has-role {
+  background: #ede9fe;
+  color: #5b21b6;
+  border-color: #c4b5fd;
+}
+
+.role-badge.no-role {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+}
+
+.role-badge:hover {
+  transform: scale(1.05);
+}

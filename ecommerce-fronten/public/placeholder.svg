@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="320" viewBox="0 0 400 320" role="img" aria-label="Image de remplacement">
+  <rect width="400" height="320" fill="#f2f2f2" />
+  <rect x="24" y="24" width="352" height="272" rx="20" fill="#e0e0e0" />
+  <path d="M112 176h176M112 216h176" stroke="#b0b0b0" stroke-width="16" stroke-linecap="round" />
+  <circle cx="132" cy="104" r="28" fill="#d8d8d8" />
+  <text x="200" y="308" font-family="Arial, sans-serif" font-size="24" fill="#9a9a9a" text-anchor="middle">Pas d'image</text>
+</svg>
